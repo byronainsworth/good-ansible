@@ -1,7 +1,11 @@
 ---
-# handlers file for postgres
+# handlers file for frontends
 
-- name: restart haproxy service
+- name: enable "{{ package }}" service
   service:
-    name: haproxy
+    name: "{{ package }}"
+
+- name: restart "{{ package }}" service
+  service:
+    name: "{{ package }}"
     state: restarted

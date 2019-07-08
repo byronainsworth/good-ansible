@@ -1,12 +1,12 @@
 ---
-# handlers file for postgres
+# handlers file for dbs
 
-- name: enable postgres
+- name: enable "{{ service }}" service
   service:
-    name: postgres
+    name: "{{ service }}"
     enabled: yes
 
-- name: restart postgres
+- name: restart "{{ service }}" service
   service:
-    name: postgres
+    name: "{{ service }}"
     state: restarted

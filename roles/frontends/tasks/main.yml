@@ -1,21 +1,18 @@
 ---
-# tasks file for postgres
+# tasks file for frontends
 
-# Install > Enable > Configure > Start
-
-- name: install haproxy
+- name: install "{{ package }}"
   package:
-    name: haproxy
+    name: "{{ package }}"
     state: latest
-  notify: restart haproxy service
+  notify:
+   - enable "{{ package }}" service
+   - restart "{{ package }}" service
 
-- name: enable haproxy service
-  service:
-    name: haproxy
-    enabled: yes
-
-- name: configure haproxy
+- name: configure "{{ package }}"
   template:
     src: haproxy.cfg.j2
     dest: /etc/haproxy/haproxy.cfg
-  notify: restart haproxy service
+  notify:
+   - enable "{{ package }}" service
+   - restart "{{ package }}" service

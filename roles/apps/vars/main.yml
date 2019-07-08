@@ -1,2 +1,5 @@
 ---
-# vars file for postgres
+# vars file for apps
+
+package: tomcat
+basedir: /usr/share/tomcat/webapps/ROOT

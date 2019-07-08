@@ -1,2 +1,5 @@
 ---
-# vars file for postgres
+# vars file for dbs
+
+package: postgresql-server
+service: postgres

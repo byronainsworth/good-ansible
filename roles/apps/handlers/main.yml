@@ -1,7 +1,12 @@
 ---
-# handlers file for postgres
+# handlers file for apps
 
-- name: restart tomcat service
+- name: enable "{{ package }}" service
   service:
-    name: tomcat
+    name: "{{ package }}"
+    enabled: yes
+
+- name: restart "{{ package }}" service
+  service:
+    name: "{{ package }}"
     state: restarted

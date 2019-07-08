@@ -1,7 +1,8 @@
 ---
-# tasks file for postgres
-- name: Enable source repositories
+# tasks file for common
+
+- name: enable repositories
   template:
-    src: templates/open_three-tier-app.repo
+    src: repositories.j2
     dest: /etc/yum.repos.d/open_three-tier-app.repo
     mode: 0644

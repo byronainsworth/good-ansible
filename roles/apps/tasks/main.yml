@@ -1,27 +1,24 @@
 ---
-# tasks file for postgres
+# tasks file for apps
 
-# Install > Enable > Configure > Restart
-
-- name: install tomcat
+- name: install "{{ package }}"
   package:
-    name: tomcat
+    name: "{{ package }}"
     state: latest
-  notify: restart tomcat service
+  notify: 
+   - enable "{{ package }}" service
+   - restart "{{ package }}" service
 
-- name: enable tomcat
-  service:
-    name: tomcat
-    enabled: yes
-
-- name: config create ansible tomcat directory
+- name: config create ansible "{{ package }}" directory
   file:
-    path: /usr/share/tomcat/webapps/ROOT
+    path: "{{ basedir }}"
     state: directory
 
-- name: config copy static index.html to tomcat webapps/ROOT/index.html
+- name: config copy static index.html to "{{ package }}" webapps/ROOT/index.html
   template:
     src: index.html.j2
-    dest: /usr/share/tomcat/webapps/ROOT/index.html
+    dest: "{{ basedir }}/index.html"
     mode: 0644
-  notify: restart tomcat service
+  notify: 
+   - enable "{{ package }}" service
+   - restart "{{ package }}" service
