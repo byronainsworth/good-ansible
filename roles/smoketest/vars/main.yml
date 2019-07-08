@@ -1,2 +1,4 @@
 ---
 # vars file for smoketest
+
+url: http://frontend1.89c7.example.opentlc.com

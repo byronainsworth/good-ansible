@@ -1,2 +1,10 @@
 ---
 # tasks file for smoketest
+
+- name: test public url returns content
+  action: uri url="{{ url }}" return_content=yes
+  register: webpage
+
+- fail:
+    msg: "site not returning expected content"
+  when: "'Ansible' not in webpage.content"

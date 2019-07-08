@@ -30,3 +30,11 @@
   roles:
     - {name: common, tags: common}
     - {name: dbs, tags: dbs}
+
+# Execute smoke test
+- name: execute smoke test
+  become: yes
+  gather_facts: true
+  hosts: frontends
+  roles:
+   - {name: smoketest, tags: smoketest}
