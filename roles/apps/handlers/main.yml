@@ -1,0 +1,7 @@
+---
+# handlers file for postgres
+
+- name: restart tomcat service
+  service:
+    name: tomcat
+    state: restarted

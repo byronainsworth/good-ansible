@@ -1,0 +1,7 @@
+---
+# handlers file for postgres
+
+- name: restart haproxy service
+  service:
+    name: haproxy
+    state: restarted
