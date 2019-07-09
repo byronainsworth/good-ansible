@@ -1,11 +1,11 @@
 ---
 # handlers file for frontends
 
-- name: enable "{{ package }}" service
+- name: enable "{{ frontends_package }}" service
   service:
-    name: "{{ package }}"
+    name: "{{ frontends_package }}"
 
-- name: restart "{{ package }}" service
+- name: restart "{{ frontends_package }}" service
   service:
-    name: "{{ package }}"
+    name: "{{ frontends_package }}"
     state: restarted

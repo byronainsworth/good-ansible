@@ -1,12 +1,12 @@
 ---
 # handlers file for dbs
 
-- name: enable "{{ service }}" service
+- name: enable "{{ dbs_service }}" service
   service:
-    name: "{{ service }}"
+    name: "{{ dbs_service }}"
     enabled: yes
 
-- name: restart "{{ service }}" service
+- name: restart "{{ dbs_service }}" service
   service:
-    name: "{{ service }}"
+    name: "{{ dbs_service }}"
     state: restarted

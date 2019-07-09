@@ -1,18 +1,18 @@
 ---
 # tasks file for frontends
 
-- name: install "{{ package }}"
+- name: install "{{ frontends_package }}"
   package:
-    name: "{{ package }}"
+    name: "{{ frontends_package }}"
     state: latest
   notify:
-   - enable "{{ package }}" service
-   - restart "{{ package }}" service
+   - enable "{{ frontends_package }}" service
+   - restart "{{ frontends_package }}" service
 
-- name: configure "{{ package }}"
+- name: configure "{{ frontends_package }}"
   template:
     src: haproxy.cfg.j2
     dest: /etc/haproxy/haproxy.cfg
   notify:
-   - enable "{{ package }}" service
-   - restart "{{ package }}" service
+   - enable "{{ frontends_package }}" service
+   - restart "{{ frontends_package }}" service

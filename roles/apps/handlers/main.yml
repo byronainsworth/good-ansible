@@ -1,12 +1,12 @@
 ---
 # handlers file for apps
 
-- name: enable "{{ package }}" service
+- name: enable "{{ apps_package }}" service
   service:
-    name: "{{ package }}"
+    name: "{{ apps_package }}"
     enabled: yes
 
-- name: restart "{{ package }}" service
+- name: restart "{{ apps_package }}" service
   service:
-    name: "{{ package }}"
+    name: "{{ apps_package }}"
     state: restarted

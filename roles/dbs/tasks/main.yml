@@ -1,23 +1,23 @@
 ---
 # tasks file for dbs
 
-- name: install "{{ package }}"
+- name: install "{{ dbs_package }}"
   package:
     name: 
-      - "{{ package }}"
+      - "{{ dbs_package }}"
     state: latest
   notify:
-    - enable "{{ service }}" service
-    - start "{{ service }}" service
+    - enable "{{ dbs_service }}" service
+    - start "{{ dbs_service }}" service
 
-- name: Check for present "{{ service }}" data
+- name: Check for present "{{ dbs_service }}" data
   stat:
     path: /var/lib/pgsql/data/PG_VERSION
   register: pgsql_stat
 
-- name: initialise "{{ service }}"
+- name: initialise "{{ dbs_service }}"
   command: postgresql-setup initdb
   when: not pgsql_stat.stat.exists
   notify:
-    - enable "{{ service }}" service
-    - start "{{ service }}" service
+    - enable "{{ dbs_service }}" service
+    - start "{{ dbs_service }}" service
