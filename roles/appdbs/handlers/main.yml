@@ -3,10 +3,10 @@
 
 - name: enable "{{ appdbs_service }}" service
   service:
-    name: "{{ appdbs_service }}sql"
+    name: "{{ appdbs_service }}ql"
     enabled: yes
 
 - name: restart "{{ appdbs_service }}" service
   service:
-    name: "{{ appdbs_service }}sql"
+    name: "{{ appdbs_service }}ql"
     state: restarted
