@@ -20,4 +20,4 @@
   when: not pgsql_stat.stat.exists
   notify:
     - enable "{{ appdbs_service }}" service
-    - start "{{ appdbs_service }}" service
+    - restart "{{ appdbs_service }}" service
