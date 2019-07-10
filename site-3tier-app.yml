@@ -1,0 +1,49 @@
+---
+# Good ansible! this playbook is an example of great practices!
+# Author: Byron Ainsworth
+# Email: byron.ainsworth@gmail.com
+
+
+# Create in Memory inventory
+- name: create in memory inventory
+  hosts: workstation
+  gather_facts: true
+  roles:
+  - name: osp-facts
+
+
+# Set up front-end load balancer tier
+- name: setup load-balancer tier
+  hosts: frontends
+  gather_facts: false
+  become: yes
+  roles:
+    - {name: common, tags: common}
+    - {name: frontends, tags: frontends}
+
+
+# Set up application server tier
+- name: setup app tier
+  hosts: apps
+  gather_facts: false
+  become: yes
+  roles:
+    - {name: common, tags: common}
+    - {name: apps, tags: apps}
+ 
+# Set up database tier
+- name: setup database tier
+  become: yes
+  gather_facts: false
+  hosts: appdbs
+  roles:
+    - {name: common, tags: common}
+    - {name: appdbs, tags: appdbs}
+
+# Execute smoke test
+- name: execute smoke test
+  become: yes
+  gather_facts: true
+  hosts: frontends
+  roles:
+   - {name: smoketest, tags: smoketest}

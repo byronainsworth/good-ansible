@@ -8,7 +8,7 @@
     state: latest
   notify:
     - enable "{{ appdbs_service }}" service
-    - start "{{ appdbs_service }}" service
+    - restart "{{ appdbs_service }}" service
 
 - name: Check for present "{{ appdbs_service }}" data
   stat:

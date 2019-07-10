@@ -1,0 +1,10 @@
+---
+# Good ansible! this playbook is an example of great practices!
+# Author: Byron Ainsworth
+# Email: byron.ainsworth@gmail.com
+
+- hosts: workstation
+  become: yes
+  roles:
+    - osp-servers
+
