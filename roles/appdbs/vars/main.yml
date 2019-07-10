@@ -1,0 +1,5 @@
+---
+# vars file for appdbs
+
+appdbs_package: postgresql-server
+appdbs_service: postgres

@@ -1,0 +1,12 @@
+---
+# handlers file for appdbs
+
+- name: enable "{{ appdbs_service }}" service
+  service:
+    name: "{{ appdbs_service }}"
+    enabled: yes
+
+- name: restart "{{ appdbs_service }}" service
+  service:
+    name: "{{ appdbs_service }}"
+    state: restarted

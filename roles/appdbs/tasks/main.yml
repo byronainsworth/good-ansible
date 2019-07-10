@@ -1,0 +1,23 @@
+---
+# tasks file for appdbs
+
+- name: install "{{ appdbs_package }}"
+  package:
+    name: 
+      - "{{ appdbs_package }}"
+    state: latest
+  notify:
+    - enable "{{ appdbs_service }}" service
+    - start "{{ appdbs_service }}" service
+
+- name: Check for present "{{ appdbs_service }}" data
+  stat:
+    path: /var/lib/pgsql/data/PG_VERSION
+  register: pgsql_stat
+
+- name: initialise "{{ appdbs_service }}"
+  command: postgresql-setup initdb
+  when: not pgsql_stat.stat.exists
+  notify:
+    - enable "{{ appdbs_service }}" service
+    - start "{{ appdbs_service }}" service

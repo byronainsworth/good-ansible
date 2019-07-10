@@ -26,10 +26,10 @@
 - name: setup database tier
   become: yes
   gather_facts: false
-  hosts: dbs
+  hosts: appdbs
   roles:
     - {name: common, tags: common}
-    - {name: dbs, tags: dbs}
+    - {name: appdbs, tags: appdbs}
 
 # Execute smoke test
 - name: execute smoke test

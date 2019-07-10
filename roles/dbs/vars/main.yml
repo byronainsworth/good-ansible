@@ -1,5 +1,0 @@
----
-# vars file for dbs
-
-dbs_package: postgresql-server
-dbs_service: postgres
