@@ -3,6 +3,15 @@
 # Author: Byron Ainsworth
 # Email: byron.ainsworth@gmail.com
 
+
+# Create in Memory inventory
+- name: create in memory inventory
+  hosts: workstation
+  gather_facts: true
+  roles:
+  - name: osp-facts
+
+
 # Set up front-end load balancer tier
 - name: setup load-balancer tier
   hosts: frontends
